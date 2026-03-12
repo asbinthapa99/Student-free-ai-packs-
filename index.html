@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Student Deals — Free & Discounted Tools</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;600;700;800&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    :root {
+      /* Blues */
+      --bg:        #060d1f;
+      --bg2:       #0a1628;
+      --bg3:       #0e1e35;
+      --card:      #0d1b30;
+      --card-h:    #112040;
+      --border:    rgba(99,155,255,0.12);
+      --border-h:  rgba(99,155,255,0.28);
+      --glow:      rgba(59,130,246,0.18);
+
+      /* Text */
+      --text:  #e8f0ff;
+      --text2: #8fa8cc;
+      --text3: #4d6a8a;
+
+      /* Accents */
+      --blue:   #3b82f6;
+      --blue2:  #60a5fa;
+      --cyan:   #22d3ee;
+
+      /* Status */
+      --green:        #4ade80;
+      --green-bg:     rgba(74,222,128,0.1);
+      --green-border: rgba(74,222,128,0.22);
+
+      --amber:        #fbbf24;
+      --amber-bg:     rgba(251,191,36,0.1);
+      --amber-border: rgba(251,191,36,0.22);
+
+      --purple:        #a78bfa;
+      --purple-bg:     rgba(167,139,250,0.1);
+      --purple-border: rgba(167,139,250,0.22);
+
+      --rose:        #fb7185;
+      --rose-bg:     rgba(251,113,133,0.1);
+      --rose-border: rgba(251,113,133,0.22);
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 14px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ── layered background ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 70% 45% at 15% 0%,   rgba(37,99,235,0.22) 0%, transparent 65%),
+        radial-gradient(ellipse 55% 35% at 85% 100%, rgba(6,182,212,0.10) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 30% at 50% 50%,  rgba(59,130,246,0.06) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* subtle grid lines */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(99,155,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(99,155,255,0.03) 1px, transparent 1px);
+      background-size: 48px 48px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ──────────────── HEADER ──────────────── */
+    header {
+      position: relative;
+      z-index: 2;
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 72px 32px 60px;
+    }
+
+    .header-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 56px;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-icon {
+      width: 34px; height: 34px;
+      border-radius: 9px;
+      background: linear-gradient(135deg, var(--blue), var(--cyan));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px;
+      box-shadow: 0 0 18px rgba(59,130,246,0.35);
+    }
+
+    .logo-text {
+      font-family: 'Syne', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -0.01em;
+    }
+
+    .logo-sub {
+      font-size: 11px;
+      font-weight: 400;
+      color: var(--text3);
+      display: block;
+      letter-spacing: 0.02em;
+    }
+
+    .gh-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.03);
+      color: var(--text2);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 12px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: all 0.2s;
+      backdrop-filter: blur(8px);
+    }
+
+    .gh-btn:hover {
+      border-color: var(--border-h);
+      background: rgba(59,130,246,0.08);
+      color: var(--text);
+    }
+
+    /* hero */
+    .hero { max-width: 680px; margin-bottom: 56px; }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--blue2);
+      margin-bottom: 20px;
+      padding: 5px 12px;
+      border-radius: 100px;
+      background: rgba(59,130,246,0.1);
+      border: 1px solid rgba(59,130,246,0.2);
+    }
+
+    .hero-eyebrow span { width: 5px; height: 5px; border-radius: 50%; background: var(--cyan); display: inline-block; box-shadow: 0 0 5px var(--cyan); animation: blink 2s ease infinite; }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+    h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(36px, 5vw, 62px);
+      font-weight: 800;
+      line-height: 1.07;
+      letter-spacing: -0.03em;
+      color: var(--text);
+      margin-bottom: 20px;
+    }
+
+    h1 .accent {
+      background: linear-gradient(100deg, var(--blue2) 0%, var(--cyan) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-desc {
+      font-size: 16px;
+      font-weight: 300;
+      color: var(--text2);
+      line-height: 1.7;
+      max-width: 500px;
+    }
+
+    /* stats row */
+    .stats {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .stat-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 18px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      min-width: 120px;
+      transition: border-color 0.2s;
+    }
+
+    .stat-card:hover { border-color: var(--border-h); }
+
+    .stat-num {
+      font-family: 'Syne', sans-serif;
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--text);
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text3);
+    }
+
+    /* ──────────────── CONTROLS ──────────────── */
+    .controls-wrap {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(6,13,31,0.85);
+      backdrop-filter: blur(20px) saturate(1.5);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .controls {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 12px 32px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .search-wrap { position: relative; }
+
+    .search-icon {
+      position: absolute;
+      left: 12px; top: 50%;
+      transform: translateY(-50%);
+      color: var(--text3);
+      pointer-events: none;
+    }
+
+    #search {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 8px 12px 8px 35px;
+      color: var(--text);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 13px;
+      width: 220px;
+      outline: none;
+      transition: border-color 0.2s, width 0.3s, box-shadow 0.2s;
+    }
+
+    #search:focus {
+      border-color: rgba(59,130,246,0.5);
+      box-shadow: 0 0 0 3px rgba(59,130,246,0.08);
+      width: 270px;
+    }
+
+    #search::placeholder { color: var(--text3); }
+
+    .pill-row { display: flex; gap: 6px; flex-wrap: wrap; flex: 1; }
+
+    .pill {
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--text2);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 12px;
+      font-weight: 500;
+      padding: 5px 13px;
+      border-radius: 100px;
+      cursor: pointer;
+      transition: all 0.18s;
+      white-space: nowrap;
+    }
+
+    .pill:hover { border-color: var(--border-h); color: var(--text); background: rgba(59,130,246,0.06); }
+
+    .pill.active {
+      background: var(--blue);
+      border-color: var(--blue);
+      color: #fff;
+      font-weight: 600;
+      box-shadow: 0 0 14px rgba(59,130,246,0.3);
+    }
+
+    .count-chip {
+      margin-left: auto;
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--text3);
+      letter-spacing: 0.06em;
+      white-space: nowrap;
+    }
+
+    /* ──────────────── MAIN ──────────────── */
+    main {
+      position: relative;
+      z-index: 2;
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 0 32px 100px;
+    }
+
+    /* category block */
+    .cat-block { margin-bottom: 12px; }
+
+    .cat-label {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 36px 0 16px;
+    }
+
+    .cat-name-wrap {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .cat-line {
+      width: 20px; height: 2px;
+      border-radius: 2px;
+      background: linear-gradient(90deg, var(--blue), var(--cyan));
+    }
+
+    .cat-name {
+      font-family: 'Syne', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--text2);
+    }
+
+    .cat-count {
+      font-size: 11px;
+      color: var(--text3);
+    }
+
+    /* ── CARDS GRID ── */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 14px;
+    }
+
+    /* ── CARD ── */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      transition: border-color 0.22s, transform 0.22s, box-shadow 0.22s, background 0.22s;
+      animation: popIn 0.4s cubic-bezier(0.22,1,0.36,1) both;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* top shimmer line */
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(99,155,255,0.3), transparent);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .card:hover {
+      border-color: var(--border-h);
+      background: var(--card-h);
+      transform: translateY(-3px);
+      box-shadow: 0 16px 48px rgba(0,0,0,0.35), 0 0 0 1px rgba(59,130,246,0.08), inset 0 1px 0 rgba(99,155,255,0.08);
+    }
+
+    .card:hover::before { opacity: 1; }
+
+    @keyframes popIn {
+      from { opacity: 0; transform: translateY(14px) scale(0.98); }
+      to   { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    /* card top row */
+    .card-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .card-name {
+      font-family: 'Syne', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -0.01em;
+      line-height: 1.3;
+    }
+
+    .discount-badge {
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 7px;
+      white-space: nowrap;
+      flex-shrink: 0;
+      letter-spacing: 0.02em;
+    }
+
+    .b-free   { background: var(--green-bg);  border: 1px solid var(--green-border);  color: var(--green); }
+    .b-off    { background: var(--rose-bg);   border: 1px solid var(--rose-border);   color: var(--rose); }
+    .b-credit { background: var(--purple-bg); border: 1px solid var(--purple-border); color: var(--purple); }
+    .b-other  { background: var(--amber-bg);  border: 1px solid var(--amber-border);  color: var(--amber); }
+
+    /* card body */
+    .card-desc {
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--text2);
+      line-height: 1.6;
+      flex: 1;
+    }
+
+    /* tags / meta */
+    .card-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .meta-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 6px;
+      font-size: 12px;
+      color: var(--text3);
+    }
+
+    .meta-row svg { flex-shrink: 0; margin-top: 2px; }
+    .meta-row span { line-height: 1.4; }
+
+    .pack-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 2px 8px;
+      border-radius: 4px;
+      background: rgba(34,211,238,0.08);
+      border: 1px solid rgba(34,211,238,0.2);
+      color: var(--cyan);
+      margin-top: 2px;
+      width: fit-content;
+    }
+
+    /* card footer */
+    .card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding-top: 12px;
+      border-top: 1px solid var(--border);
+      margin-top: auto;
+    }
+
+    .deal-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--blue2);
+      text-decoration: none;
+      letter-spacing: 0.01em;
+      transition: color 0.15s, gap 0.15s;
+    }
+
+    .deal-link:hover { color: var(--cyan); gap: 8px; }
+
+    .deal-link svg { transition: transform 0.2s; }
+    .deal-link:hover svg { transform: translate(2px,-2px); }
+
+    /* ──────────────── EMPTY ──────────────── */
+    #empty {
+      display: none;
+      text-align: center;
+      padding: 100px 0;
+      color: var(--text3);
+    }
+
+    .empty-icon { font-size: 40px; margin-bottom: 14px; opacity: 0.3; }
+    #empty p { font-size: 14px; font-weight: 300; }
+
+    /* ──────────────── FOOTER ──────────────── */
+    footer {
+      position: relative;
+      z-index: 2;
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 28px 32px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .footer-note { font-size: 12px; color: var(--text3); }
+
+    .footer-links { display: flex; gap: 20px; }
+
+    .footer-link {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--text3);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      transition: color 0.15s;
+    }
+
+    .footer-link:hover { color: var(--blue2); }
+
+    /* ──────────────── RESPONSIVE ──────────────── */
+    @media (max-width: 640px) {
+      header { padding: 48px 20px 40px; }
+      main   { padding: 0 20px 60px; }
+      .controls { padding: 10px 20px; }
+      footer { padding: 24px 20px; }
+      .cards-grid { grid-template-columns: 1fr; }
+      #search { width: 100%; }
+      #search:focus { width: 100%; }
+      .search-wrap { flex: 1; }
+      h1 { font-size: 34px; }
+      .stats { gap: 10px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── HEADER ── -->
+<header>
+  <div class="header-top">
+    <div class="logo">
+      <div class="logo-icon">🎓</div>
+      <div>
+        <span class="logo-text">Student Deals Hub</span>
+        <span class="logo-sub">Open source · Community maintained</span>
+      </div>
+    </div>
+    <a class="gh-btn" href="https://education.github.com/pack" target="_blank" rel="noopener">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+      GitHub Student Pack
+    </a>
+  </div>
+
+  <div class="hero">
+    <div class="hero-eyebrow"><span></span> 50+ verified deals for enrolled students</div>
+    <h1>Every student deal,<br/><span class="accent">in one place.</span></h1>
+    <p class="hero-desc">Free software, cloud credits, and deep discounts. Verify your enrollment once — unlock thousands in tools.</p>
+  </div>
+
+  <div class="stats">
+    <div class="stat-card">
+      <span class="stat-num" id="total-num">50</span>
+      <span class="stat-label">Total deals</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-num">$10k+</span>
+      <span class="stat-label">Savings / yr</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-num">11</span>
+      <span class="stat-label">Categories</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-num">Free</span>
+      <span class="stat-label">Always</span>
+    </div>
+  </div>
+</header>
+
+<!-- ── CONTROLS ── -->
+<div class="controls-wrap">
+  <div class="controls">
+    <div class="search-wrap">
+      <svg class="search-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="text" id="search" placeholder="Search deals…" autocomplete="off" />
+    </div>
+    <div class="pill-row" id="filters">
+      <button class="pill active" data-f="all">All</button>
+      <button class="pill" data-f="free">Free</button>
+      <button class="pill" data-f="discounted">Discounted</button>
+      <button class="pill" data-f="credits">Credits</button>
+      <button class="pill" data-f="development">Dev</button>
+      <button class="pill" data-f="design">Design</button>
+      <button class="pill" data-f="ai">AI</button>
+      <button class="pill" data-f="cloud">Cloud</button>
+      <button class="pill" data-f="learning">Learning</button>
+    </div>
+    <span class="count-chip" id="count-chip"></span>
+  </div>
+</div>
+
+<!-- ── MAIN ── -->
+<main id="main">
+  <div id="empty">
+    <div class="empty-icon">◎</div>
+    <p>No matches — try a different search or filter.</p>
+  </div>
+</main>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <span class="footer-note">Deals may change — always verify at official signup pages · Last updated March 2025</span>
+  <div class="footer-links">
+    <a class="footer-link" href="https://education.github.com/pack" target="_blank" rel="noopener">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+      Contribute
+    </a>
+    <a class="footer-link" href="#" target="_blank" rel="noopener">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+      Submit a deal
+    </a>
+  </div>
+</footer>
+
+<script>
+const DEALS = [
+  { name:"GitHub Copilot Pro",      cat:"Development",   discount:"FREE",           desc:"AI code completion and programming assistant inside your editor.",    req:"Student verification via GitHub",            note:"Part of GitHub Student Pack",          tags:["development","ai","free"],              pack:true,  link:"https://education.github.com/pack" },
+  { name:"GitHub Pro",              cat:"Development",   discount:"FREE",           desc:"Unlimited private repos, Actions minutes, and Codespaces compute.",   req:"Student verification",                       note:"",                                     tags:["development","free"],                   pack:true,  link:"https://education.github.com/pack" },
+  { name:"JetBrains All Products",  cat:"Development",   discount:"FREE",           desc:"Every professional IDE: IntelliJ, PyCharm, WebStorm, Rider & more.", req:".edu email verification",                    note:"All IDEs in one licence",               tags:["development","free"],                   pack:false, link:"https://www.jetbrains.com/community/education/" },
+  { name:"Repl.it Hacker",          cat:"Development",   discount:"FREE",           desc:"Browser-based cloud IDE with instant deployment and collaboration.",  req:"GitHub Student Pack",                        note:"Cloud-based IDE",                       tags:["development","free"],                   pack:true,  link:"https://education.github.com/pack" },
+  { name:"Appwrite Education",      cat:"Development",   discount:"FREE Pro",       desc:"Backend-as-a-service: databases, auth, storage, and serverless fns.", req:"GitHub Student Pack",                        note:"$15/month value",                       tags:["development","free"],                   pack:true,  link:"https://education.github.com/pack" },
+  { name:"GitLens Pro",             cat:"Development",   discount:"FREE",           desc:"Supercharge Git inside VS Code with rich history and blame views.",   req:"GitHub Student Pack",                        note:"VS Code extension",                     tags:["development","free"],                   pack:true,  link:"https://education.github.com/pack" },
+  { name:"MongoDB Atlas",           cat:"Development",   discount:"FREE + credits", desc:"Fully managed cloud MongoDB database with a generous free tier.",     req:"Student verification",                       note:"Enhanced free tier for students",       tags:["development","cloud","free","credits"], pack:false, link:"https://www.mongodb.com/students" },
+  { name:"SendGrid",                cat:"Development",   discount:"FREE credits",   desc:"Reliable transactional email delivery API for your apps.",            req:"GitHub Student Pack",                        note:"",                                     tags:["development","free","credits"],         pack:true,  link:"https://education.github.com/pack" },
+  { name:"Xcode",                   cat:"Development",   discount:"FREE",           desc:"Apple's full IDE for building iOS, macOS, and watchOS apps.",         req:"Apple ID — no student verification needed",  note:"",                                     tags:["development","free"],                   pack:false, link:"https://developer.apple.com/xcode/" },
+  { name:"Apple Developer Program", cat:"Development",   discount:"Fee waiver",     desc:"Publish iOS and macOS apps to the App Store.",                       req:"Educational institution membership",          note:"Waivers available via your institution", tags:["development","free"],                   pack:false, link:"https://developer.apple.com/" },
+  { name:"Namecheap",               cat:"Development",   discount:"FREE domain",    desc:"Free .me domain registration plus an SSL certificate.",              req:"GitHub Student Pack",                        note:"Via GitHub Student Pack",               tags:["web","development","free"],             pack:true,  link:"https://education.github.com/pack" },
+
+  { name:"Adobe Creative Cloud",    cat:"Design",        discount:"65% OFF",        desc:"Photoshop, Illustrator, Premiere Pro — the complete creative suite.", req:"Student verification via SheerID",           note:"~$16–20/month in first year",           tags:["design","discounted"],                  pack:false, link:"https://www.adobe.com/creativecloud/buy/students.html" },
+  { name:"Figma Professional",      cat:"Design",        discount:"FREE",           desc:"UI/UX design, interactive prototyping, and real-time collaboration.", req:"Education domain email",                     note:"Full Professional plan features",        tags:["design","free"],                        pack:false, link:"https://www.figma.com/education/" },
+  { name:"Canva Pro",               cat:"Design",        discount:"FREE",           desc:"Drag-and-drop graphic design with thousands of premium templates.",   req:"K-12 free; university via campus programs",  note:"",                                     tags:["design","free"],                        pack:false, link:"https://www.canva.com/education/" },
+  { name:"Autodesk (All Products)", cat:"Design",        discount:"FREE",           desc:"AutoCAD, Fusion 360, Maya, Revit — professional CAD and 3D tools.",  req:"Student verification",                       note:"Free for 1–3 years",                    tags:["design","free"],                        pack:false, link:"https://www.autodesk.com/education/edu-software" },
+  { name:"Blender",                 cat:"Design",        discount:"FREE (always)",  desc:"Open-source 3D modelling, sculpting, animation, and rendering.",     req:"None — open source software",                note:"Always free for everyone",               tags:["design","free"],                        pack:false, link:"https://www.blender.org/" },
+  { name:"Sketch",                  cat:"Design",        discount:"50% OFF",        desc:"The go-to UI/UX design tool for macOS professionals.",               req:"Student verification",                       note:"macOS only",                            tags:["design","discounted"],                  pack:false, link:"https://www.sketch.com/store/edu/" },
+  { name:"Framer",                  cat:"Design",        discount:"FREE",           desc:"Design and publish real, interactive websites — no code required.",  req:"Student verification",                       note:"",                                     tags:["design","free"],                        pack:false, link:"https://www.framer.com/pricing/" },
+  { name:"InVision",                cat:"Design",        discount:"FREE",           desc:"Prototyping, design system management, and handoff workflows.",      req:"Student verification",                       note:"",                                     tags:["design","free"],                        pack:false, link:"https://www.invisionapp.com/education-signup" },
+
+  { name:"Google One AI Premium",   cat:"AI",            discount:"FREE",           desc:"Gemini Advanced, 2TB storage, and NotebookLM Pro — all free.",       req:"US college students with .edu email",         note:"Sign up by June 30, 2025",              tags:["ai","free"],                            pack:false, link:"https://one.google.com/" },
+  { name:"Perplexity Pro",          cat:"AI",            discount:"FREE (24 mo)",   desc:"AI-powered search and deep research assistant with citations.",       req:"Student verification via SheerID",           note:"Up to 24 months via referral program",   tags:["ai","free"],                            pack:false, link:"https://www.perplexity.ai/" },
+  { name:"Notion AI",               cat:"AI",            discount:"FREE",           desc:"AI-powered note-taking, wikis, and project management.",             req:"Student verification",                       note:"",                                     tags:["productivity","ai","free"],             pack:false, link:"https://www.notion.so/product/ai" },
+  { name:"Vertex AI",               cat:"AI",            discount:"$300 credits",   desc:"Train and deploy ML models on Google Cloud infrastructure.",          req:"New Google Cloud account",                   note:"Part of GCP new-user free trial",        tags:["ai","cloud","credits"],                 pack:false, link:"https://cloud.google.com/vertex-ai" },
+  { name:"Julius AI",               cat:"AI",            discount:"50% OFF",        desc:"Conversational AI for data analysis, charts, and insights.",         req:"Academic email verification",                note:"~$10/month after discount",              tags:["ai","discounted"],                      pack:false, link:"https://julius.ai/" },
+  { name:"Humata AI",               cat:"AI",            discount:"$1.99/month",    desc:"Upload PDFs and chat with your documents using AI.",                 req:"Student verification",                       note:"Heavily discounted student rate",        tags:["ai","discounted"],                      pack:false, link:"https://www.humata.ai/" },
+
+  { name:"Microsoft Azure",         cat:"Cloud",         discount:"$100 credits",   desc:"Virtual machines, AI services, and 200+ cloud products.",            req:"18+ student with school email",              note:"Credits valid for 12 months",            tags:["cloud","credits"],                      pack:false, link:"https://azure.microsoft.com/en-us/pricing/offers/ms-azr-0170p/" },
+  { name:"AWS Educate",             cat:"Cloud",         discount:"FREE credits",   desc:"AWS cloud services, hands-on labs, and certification prep.",         req:"Student verification",                       note:"Ongoing program with regular credits",   tags:["cloud","credits","learning","free"],    pack:false, link:"https://aws.amazon.com/education/awseducate/" },
+  { name:"DigitalOcean",            cat:"Cloud",         discount:"FREE credits",   desc:"Simple cloud hosting: VMs, Kubernetes, managed databases.",          req:"GitHub Student Pack",                        note:"",                                     tags:["cloud","credits","free"],               pack:true,  link:"https://education.github.com/pack" },
+  { name:"Google Cloud Skills",     cat:"Cloud",         discount:"200 credits",    desc:"Hands-on cloud labs and Google Cloud certification preparation.",    req:"Student verification",                       note:"",                                     tags:["learning","cloud","credits"],           pack:false, link:"https://cloud.google.com/edu/students" },
+  { name:"Heroku",                  cat:"Cloud",         discount:"FREE tier",      desc:"Deploy apps instantly with a free hosting tier for all users.",      req:"Account creation only",                      note:"",                                     tags:["cloud","free"],                         pack:false, link:"https://www.heroku.com/pricing" },
+  { name:"Cloudflare",              cat:"Cloud",         discount:"FREE tier",      desc:"CDN, DDoS protection, DNS, and web security — free for everyone.",   req:"Account creation only",                      note:"No student status needed",               tags:["web","cloud","free"],                   pack:false, link:"https://www.cloudflare.com/plans/" },
+
+  { name:"DataCamp Premium",        cat:"Learning",      discount:"50% OFF",        desc:"Data science, Python, R, SQL, and ML courses with hands-on exercises.", req:"Student verification",                    note:"Interactive learning platform",          tags:["learning","discounted"],                pack:false, link:"https://www.datacamp.com/pricing" },
+  { name:"Swift Playgrounds",       cat:"Learning",      discount:"FREE",           desc:"Learn Swift programming interactively on iPad or Mac.",              req:"Apple ID only",                              note:"",                                     tags:["learning","free"],                      pack:false, link:"https://developer.apple.com/swift-playgrounds/" },
+  { name:"Scrimba Pro",             cat:"Learning",      discount:"FREE 1 month",   desc:"Learn web development through interactive, editable screencasts.",   req:"GitHub Student Pack",                        note:"",                                     tags:["learning","free"],                      pack:true,  link:"https://education.github.com/pack" },
+  { name:"LinkedIn Learning",       cat:"Learning",      discount:"FREE",           desc:"Thousands of professional courses on business, tech, and creativity.", req:"University partnership required",           note:"Contact your career services office",    tags:["learning","free"],                      pack:false, link:"https://www.linkedin.com/learning/" },
+
+  { name:"Microsoft Office 365",    cat:"Productivity",  discount:"FREE",           desc:"Word, Excel, PowerPoint, Teams, and OneDrive — the full suite.",     req:"Student email verification",                 note:"Full desktop apps included",             tags:["productivity","free"],                  pack:false, link:"https://www.microsoft.com/en-us/education/products/office" },
+  { name:"Miro Team",               cat:"Productivity",  discount:"FREE",           desc:"Infinite online whiteboard for brainstorming and collaboration.",    req:"Student verification",                       note:"Full Team plan features",                tags:["productivity","free"],                  pack:false, link:"https://miro.com/education/" },
+  { name:"Lucidchart",              cat:"Productivity",  discount:"FREE",           desc:"Create flowcharts, org charts, network diagrams, and mind maps.",    req:"Education email verification",               note:"",                                     tags:["productivity","free"],                  pack:false, link:"https://www.lucidchart.com/pages/usecase/education" },
+  { name:"Airtable Pro",            cat:"Productivity",  discount:"50% OFF",        desc:"Flexible database and project management tool.",                     req:"Student verification",                       note:"",                                     tags:["productivity","discounted"],            pack:false, link:"https://airtable.com/pricing" },
+  { name:"Otter.ai",                cat:"Productivity",  discount:"$8.33/mo",       desc:"AI transcription for meetings, lectures, and interviews.",           req:"Student verification",                       note:"300 free transcription minutes included", tags:["productivity","discounted"],           pack:false, link:"https://otter.ai/pricing" },
+  { name:"Grammarly Premium",       cat:"Productivity",  discount:"Discounts",      desc:"AI writing assistant for grammar, clarity, and tone improvements.",  req:"Institutional partnerships",                 note:"Check your university portal first",     tags:["productivity","discounted"],            pack:false, link:"https://www.grammarly.com/edu" },
+  { name:"Typeform",                cat:"Productivity",  discount:"Discounts",      desc:"Build beautiful, conversational forms and surveys.",                 req:"Student verification",                       note:"Check for current offers",               tags:["productivity","discounted"],            pack:false, link:"https://www.typeform.com/help/student-discount/" },
+
+  { name:"Slack Standard",          cat:"Communication", discount:"FREE",           desc:"Channel-based team messaging with integrations and file sharing.",   req:"Student team verification",                  note:"",                                     tags:["communication","free"],                 pack:false, link:"https://slack.com/pricing" },
+  { name:"Zoom Pro",                cat:"Communication", discount:"FREE",           desc:"Video conferencing for classes, office hours, and group projects.",  req:"Educational institution licensing",           note:"Via your institution's licence",         tags:["communication","free"],                 pack:false, link:"https://zoom.us/pricing/education" },
+  { name:"Discord Nitro",           cat:"Communication", discount:"Occasional FREE",desc:"Enhanced Discord with animated avatars, bigger uploads, and boosts.", req:"Via GitHub Student Pack partnerships",       note:"Check GitHub Pack for current offers",   tags:["communication","free"],                 pack:true,  link:"https://education.github.com/pack" },
+
+  { name:"Spotify Premium",         cat:"Entertainment", discount:"50% OFF",        desc:"Ad-free music streaming with offline downloads.",                    req:"18+ enrolled student, annual re-verification",note:"Regional pricing may vary",             tags:["entertainment","discounted"],           pack:false, link:"https://www.spotify.com/student/" },
+
+  { name:"LinkedIn Premium",        cat:"Professional",  discount:"FREE 1 month",   desc:"Job search tools, InMail credits, and premium career insights.",     req:"Any LinkedIn account (once per year)",        note:"Standard trial for all users",           tags:["professional","free"],                  pack:false, link:"https://www.linkedin.com/premium/" },
+  { name:"Amazon Prime Student",    cat:"Professional",  discount:"FREE 6 months",  desc:"Free delivery, Prime Video, music, and exclusive member deals.",     req:"Amazon Student account + .edu email",         note:"50% off standard rate after trial ends",  tags:["professional","free"],                 pack:false, link:"https://www.amazon.com/amazonprime" },
+
+  { name:"Unity Pro",               cat:"Game Dev",      discount:"FREE",           desc:"Industry-standard game engine used in mobile, PC, and console games.", req:"Student verification",                     note:"Full Unity Pro plan for students",       tags:["game","free"],                          pack:false, link:"https://unity.com/products/unity-student" },
+  { name:"Unreal Engine",           cat:"Game Dev",      discount:"FREE",           desc:"Epic's AAA-quality 3D game engine and virtual production toolset.",  req:"Account creation only",                      note:"Free for students and indie developers",  tags:["game","free"],                          pack:false, link:"https://www.unrealengine.com/" },
+];
+
+const CAT_ORDER = ["Development","Design","AI","Cloud","Learning","Productivity","Communication","Entertainment","Professional","Game Dev"];
+
+function badgeClass(d) {
+  const u = d.toUpperCase();
+  if (/^FREE/.test(u) || u.includes("FREE TIER") || u.includes("FREE (")) return "b-free";
+  if (u.includes("OFF")) return "b-off";
+  if (u.includes("CREDIT") || /^\$[0-9]/.test(u) || u.includes("1.99") || u.includes("8.33")) return "b-credit";
+  return "b-other";
+}
+
+const mainEl   = document.getElementById('main');
+const emptyEl  = document.getElementById('empty');
+const countChip = document.getElementById('count-chip');
+document.getElementById('total-num').textContent = DEALS.length;
+
+let activeF = 'all', term = '';
+
+function getFiltered() {
+  return DEALS.filter(d => {
+    const matchS = !term || [d.name, d.desc, d.cat, d.discount, d.note].some(s => s.toLowerCase().includes(term));
+    let matchF = true;
+    if      (activeF === 'free')       matchF = d.tags.includes('free');
+    else if (activeF === 'discounted') matchF = d.tags.includes('discounted');
+    else if (activeF === 'credits')    matchF = d.tags.includes('credits');
+    else if (activeF !== 'all')        matchF = d.tags.includes(activeF);
+    return matchS && matchF;
+  });
+}
+
+function render() {
+  const list = getFiltered();
+  countChip.textContent = list.length + (list.length === 1 ? ' result' : ' results');
+  mainEl.querySelectorAll('.cat-block').forEach(e => e.remove());
+  emptyEl.style.display = list.length ? 'none' : 'block';
+  if (!list.length) return;
+
+  const grouped = {};
+  CAT_ORDER.forEach(c => grouped[c] = []);
+  list.forEach(d => { if (!grouped[d.cat]) grouped[d.cat] = []; grouped[d.cat].push(d); });
+
+  let delay = 0;
+  CAT_ORDER.forEach(cat => {
+    const items = grouped[cat];
+    if (!items?.length) return;
+
+    const block = document.createElement('div');
+    block.className = 'cat-block';
+
+    block.innerHTML = `
+      <div class="cat-label">
+        <div class="cat-name-wrap">
+          <div class="cat-line"></div>
+          <span class="cat-name">${cat}</span>
+        </div>
+        <span class="cat-count">${items.length} deal${items.length > 1 ? 's' : ''}</span>
+      </div>
+      <div class="cards-grid" id="grid-${cat.replace(/\s/g,'-')}"></div>`;
+
+    mainEl.appendChild(block);
+    const grid = block.querySelector('.cards-grid');
+
+    items.forEach(d => {
+      const card = document.createElement('div');
+      card.className = 'card';
+      card.style.animationDelay = delay + 'ms';
+      delay = Math.min(delay + 22, 320);
+
+      card.innerHTML = `
+        <div class="card-top">
+          <span class="card-name">${d.name}</span>
+          <span class="discount-badge ${badgeClass(d.discount)}">${d.discount}</span>
+        </div>
+        <p class="card-desc">${d.desc}</p>
+        <div class="card-meta">
+          <div class="meta-row">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>${d.req}</span>
+          </div>
+          ${d.note ? `<div class="meta-row"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg><span>${d.note}</span></div>` : ''}
+          ${d.pack ? `<div class="pack-tag">📦 GitHub Student Pack</div>` : ''}
+        </div>
+        <div class="card-footer">
+          <a class="deal-link" href="${d.link}" target="_blank" rel="noopener">
+            Claim deal
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+          </a>
+        </div>`;
+
+      grid.appendChild(card);
+    });
+  });
+}
+
+document.getElementById('search').addEventListener('input', e => {
+  term = e.target.value.toLowerCase().trim();
+  render();
+});
+
+document.getElementById('filters').addEventListener('click', e => {
+  const btn = e.target.closest('.pill');
+  if (!btn) return;
+  document.querySelectorAll('.pill').forEach(p => p.classList.remove('active'));
+  btn.classList.add('active');
+  activeF = btn.dataset.f;
+  render();
+});
+
+render();
+</script>
+</body>
+</html>
