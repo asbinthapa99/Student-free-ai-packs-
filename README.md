@@ -69,6 +69,7 @@
 
 | Tool | Discount | Description | Requirement | Link |
 |---|---|---|---|---|
+| [Kilobat Pro for Students](https://kilobat.app/students) | 🟢 **FREE 1 year** | Mac app for monitoring connection quality and troubleshooting network issues; two Macs, renewable while studying | Age 13+, eligible student with school email | [→ Claim](https://kilobat.app/students) |
 | [GitHub Copilot Pro](https://education.github.com/pack) | 🟢 **FREE** | AI code completion that suggests whole lines and functions in real time inside your editor | GitHub student verification | [→ Claim](https://education.github.com/pack) |
 | [GitHub Pro](https://education.github.com/pack) | 🟢 **FREE** | Unlimited private repos, Actions minutes, Codespaces compute, and advanced code review tools | GitHub student verification | [→ Claim](https://education.github.com/pack) |
 | [JetBrains All Products](https://www.jetbrains.com/community/education/) | 🟢 **FREE** | Every professional IDE in one licence — IntelliJ, PyCharm, WebStorm, GoLand, Rider, CLion & more | `.edu` email or student verification | [→ Claim](https://www.jetbrains.com/community/education/) |
